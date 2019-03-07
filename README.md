@@ -10,7 +10,7 @@ Les présentation seront demandé en controle
 
 
 Lien pour récupérer les images : http://bows2.ec-lille.fr/BOWS2OrigEp3.tgz
-(images dans le gitignore)
+(images dans le gitignore, ajouter l image 6561 par lena.pgm)
 
 
 Formatage des fichiers .dat :
