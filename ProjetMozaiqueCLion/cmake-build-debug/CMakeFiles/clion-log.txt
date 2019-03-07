@@ -1,0 +1,4 @@
+/auto_home/rcourbier/CLION/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/cmake-build-debug

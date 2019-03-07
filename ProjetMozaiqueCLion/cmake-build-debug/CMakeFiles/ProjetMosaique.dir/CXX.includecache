@@ -1,0 +1,50 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.cpp
+ImageBase.h
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.h
+image_ppm.h
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/image_ppm.h
+
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.h
+stdio.h
+-
+stdlib.h
+-
+
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/image_ppm.h
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
+math.h
+-
+
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/CreateMozaique.cpp
+CreateMozaique.h
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/CreateMozaique.h
+
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/CreateMozaique.h
+../libs/ImageBase.cpp
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.cpp
+../libs/image_ppm.h
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/image_ppm.h
+Librairie.cpp
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/Librairie.cpp
+
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/Librairie.cpp
+Librairie.h
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/Librairie.h
+
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/Librairie.h
+../libs/ImageBase.cpp
+/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.cpp
+
