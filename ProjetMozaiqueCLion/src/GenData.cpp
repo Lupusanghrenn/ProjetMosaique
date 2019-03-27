@@ -4,18 +4,13 @@
 
 #include "GenData.h"
 
-#include <stdio.h>
-#include <iostream>
-#include <fstream>
-#include <string>
-
 using namespace std;
 
 
 //<summary>Génère un fichier de donneés selon un algo de Librairie.cpp
 // <params>Nom de la fonction de Librairie.cpp</params>
 // </summary>
-int GenData::main(int argc, char **argv) {
+int main(int argc, char **argv) {
 
     if (argc != 2)
     {
@@ -28,25 +23,34 @@ int GenData::main(int argc, char **argv) {
 
     cout << "Nom de l algo : "<<nomAlgo<<endl;
 
-    ofstream fichier("data_"+nomAlgo+".dat", ios::out | ios::trunc);  //déclaration du flux et ouverture du fichier
+    //FILE* monF = fopen("data.dat","w");
+
+    ofstream fichier("data.dat", ios::out | ios::trunc);  //déclaration du flux et ouverture du fichier
+    cout << "Nom de l algo : "<<nomAlgo<<endl;
+
 
     if (fichier){
+        cout << "Nom de l algo : "<<nomAlgo<<endl;
+        //vector<double,string> vect = vector<double,string>();//pour 
         for (int i = 0; i < 10000; ++i) {
             //le nom du fichier est donc i.pgm
             OCTET *ImgIn;
             int nH,nW;
-            string name = "Images/"+i;
-            name += ".pgm";
-            char* nom= (char *)name.c_str();
-            lire_nb_lignes_colonnes_image_pgm(nom, &nH, &nW);
+            char name[256];
+            sprintf(name,"../Images/%d.pgm",i);
+            cout<<"nom :"<<name<<endl;
+            lire_nb_lignes_colonnes_image_pgm(name, &nH, &nW);
             allocation_tableau(ImgIn, OCTET, nH*nW);
-            lire_image_pgm(nom, ImgIn, nH * nW);
+            lire_image_pgm(name, ImgIn, nH * nW);
 
             //TODO au lieu  de Librairie::valeur moyenne il faut utiliser Librairie::nomAlgo
+            //TODO tri par insertion
 
             double val = Librairie::valeurMoyenne(ImgIn,nH,nW,0,0,nH);
 
-            fichier <<val << " "<<nom<<" "<<nH<<" "<<nW<<endl;
+            //vect.insert(50,val,"test");
+
+            fichier <<val << " "<<name<<" "<<nH<<" "<<nW<<endl;
 
         }
     }else{
@@ -54,4 +58,17 @@ int GenData::main(int argc, char **argv) {
         exit(1);
     }
 
+}
+
+double Librairie::valeurMoyenne(OCTET *imageIn, int height, int width,int i, int j, int tailleBloc) {
+    double somme =0;
+    double nbPixel = 0;
+    for (int k = i; k < i+tailleBloc; ++k) {
+        for (int l = j; l < j+tailleBloc; ++l) {
+            somme +=imageIn[k*height+l];
+            nbPixel++;
+        }
+    }
+    double val = somme/nbPixel;
+    return val;
 }

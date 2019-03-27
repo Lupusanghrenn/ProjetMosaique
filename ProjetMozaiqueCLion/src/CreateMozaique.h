@@ -5,13 +5,16 @@
 #ifndef PROJETMOSAIQUE_CREATEMOZAIQUE_H
 #define PROJETMOSAIQUE_CREATEMOZAIQUE_H
 
-#include "../libs/ImageBase.cpp"
-#include "../libs/image_ppm.h"
-#include "Librairie.cpp"
+#ifndef PROJETMOSAIQUE_LIBRAIRIE_H
+
+#include "Librairie.h"
+#include <vector>
+
+#endif
 
 
 class CreateMozaique {
-    int main(int argc, char* argv[]);
+   int main(int argc, char* argv[]);
 };
 
 

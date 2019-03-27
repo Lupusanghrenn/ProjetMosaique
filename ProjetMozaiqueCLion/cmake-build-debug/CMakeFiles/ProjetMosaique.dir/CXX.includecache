@@ -6,19 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.cpp
-ImageBase.h
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.h
-image_ppm.h
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/image_ppm.h
-
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.h
-stdio.h
--
-stdlib.h
--
-
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/image_ppm.h
+/home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion/libs/image_ppm.h
 stdlib.h
 -
 stdio.h
@@ -28,23 +16,21 @@ string.h
 math.h
 -
 
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/CreateMozaique.cpp
-CreateMozaique.h
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/CreateMozaique.h
+/home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion/src/GenData.cpp
+GenData.h
+/home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion/src/GenData.h
 
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/CreateMozaique.h
-../libs/ImageBase.cpp
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.cpp
-../libs/image_ppm.h
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/image_ppm.h
-Librairie.cpp
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/Librairie.cpp
-
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/Librairie.cpp
+/home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion/src/GenData.h
 Librairie.h
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/Librairie.h
+/home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion/src/Librairie.h
+vector
+-
 
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/src/Librairie.h
-../libs/ImageBase.cpp
-/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/libs/ImageBase.cpp
+/home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion/src/Librairie.h
+../libs/image_ppm.h
+/home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion/libs/image_ppm.h
+iostream
+-
+fstream
+-
 

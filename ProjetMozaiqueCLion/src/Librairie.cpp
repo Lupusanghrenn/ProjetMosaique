@@ -4,6 +4,7 @@
 
 #include "Librairie.h"
 
+using namespace std;
 
 //<summary>Méthode pour calculer la valeur moyenne d'une image (pour bloc d'une image)
 //<para>Si on defini i et j a 0 et une taille de bloc a width ou heigth, on obtient l algo pour une image entière</para>
@@ -25,4 +26,33 @@ double Librairie::valeurMoyenne(OCTET *imageIn, int height, int width,int i, int
     }
     double val = somme/nbPixel;
     return val;
+}
+
+string Librairie::getBestImg(double val){
+    ifstream fichier("data.dat", ios::in);
+
+    if(fichier){
+        double bestDif=255,currentVal;
+        string name,bestName;
+        int nh,nw;
+
+        for(int i = 0; i < 10000; i++)
+        {
+            fichier >> currentVal>>name>>nh>>nw;
+
+            if(abs((long)(currentVal-val))<bestDif){
+                bestDif=abs((long)(currentVal-val));
+                bestName=name;
+            }
+
+            //cout << "test : "<<name<<" : "<<currentVal<<std::endl;
+        }
+
+        return bestName;
+        
+
+    }else{
+        cout << "Erreur d'ouverture du fichier data"<<endl;
+        exit(1);
+    }
 }

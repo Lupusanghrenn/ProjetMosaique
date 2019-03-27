@@ -1,4 +1,4 @@
-# Install script for directory: /auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique
+# Install script for directory: /home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/auto_home/rcourbier/Documents/HMIN Image/ProjetMosaique/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/lupusanghren/Documents/Github/ProjetMosaique/ProjetMozaiqueCLion/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
