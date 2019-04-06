@@ -1,2 +1,9 @@
 
 ProjetMozaiqueCLion/Images/
+
+ProjetMozaiqueCLion/src/\.vscode/
+ProjetMozaiqueCLion/srcNonOpti/\.vscode/
+
+ProjetMozaiqueCLion/srcNonOpti/ImageSansResize.pgm
+
+

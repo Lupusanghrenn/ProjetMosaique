@@ -1,0 +1,9 @@
+- Tri par insertion
+
+- LES CLASSES !!!!!!!
+
+- Garder la version sans le resize 
+
+- generer une image avec les moyennes
+
+- Variance truc au lieu de juste moyenne

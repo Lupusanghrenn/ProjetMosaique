@@ -31,14 +31,17 @@ int main(int argc, char **argv) {
 
     if (fichier){
         cout << "Nom de l algo : "<<nomAlgo<<endl;
-        //vector<double,string> vect = vector<double,string>();//pour 
+        vector<double> vectDouble = vector<double>();//pour 
+        vector<string> vectString = vector<string>();//pour 
         for (int i = 0; i < 10000; ++i) {
             //le nom du fichier est donc i.pgm
             OCTET *ImgIn;
             int nH,nW;
             char name[256];
             sprintf(name,"../Images/%d.pgm",i);
-            cout<<"nom :"<<name<<endl;
+            if(i%1000==0){
+                cout<<"nom :"<<name<<endl;
+            }
             lire_nb_lignes_colonnes_image_pgm(name, &nH, &nW);
             allocation_tableau(ImgIn, OCTET, nH*nW);
             lire_image_pgm(name, ImgIn, nH * nW);
@@ -48,10 +51,17 @@ int main(int argc, char **argv) {
 
             double val = Librairie::valeurMoyenne(ImgIn,nH,nW,0,0,nH);
 
-            //vect.insert(50,val,"test");
+            int index=0;
+            while(index<i && vectDouble[index]<val){
+                index++;
+            }
 
-            fichier <<val << " "<<name<<" "<<nH<<" "<<nW<<endl;
+            vectDouble.insert(vectDouble.begin()+index,val);
+            vectString.insert(vectString.begin()+index,name);
+        }
 
+        for(int index=0;index<10000;index++){
+            fichier<<vectDouble[index]<<" "<<vectString[index]<<" "<<512<<" "<<512<<std::endl;
         }
     }else{
         cout << "Erreur d'ouverture du fichier data"<<endl;

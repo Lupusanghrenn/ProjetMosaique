@@ -8,13 +8,13 @@
 #include <iostream>
 #include <fstream>
 
-#define TAILLE_BLOC 2
+#define TAILLE_BLOC 8
 
 
 class Librairie {
 public:
     static double valeurMoyenne(OCTET *imageIn, int height, int width, int i, int j, int tailleBloc);
-    static std::string getBestImg(double val);
+    static std::string getBestImg(double val, std::ifstream& fichier);
 };
 
 

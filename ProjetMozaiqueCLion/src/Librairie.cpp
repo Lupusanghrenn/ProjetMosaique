@@ -28,8 +28,7 @@ double Librairie::valeurMoyenne(OCTET *imageIn, int height, int width,int i, int
     return val;
 }
 
-string Librairie::getBestImg(double val){
-    ifstream fichier("data.dat", ios::in);
+string Librairie::getBestImg(double val, ifstream& fichier){
 
     if(fichier){
         double bestDif=255,currentVal;
@@ -47,6 +46,8 @@ string Librairie::getBestImg(double val){
 
             //cout << "test : "<<name<<" : "<<currentVal<<std::endl;
         }
+
+        fichier.clear();
 
         return bestName;
         
