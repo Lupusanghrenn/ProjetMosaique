@@ -14,7 +14,8 @@
 class Librairie {
 public:
     static double valeurMoyenne(OCTET *imageIn, int height, int width, int i, int j, int tailleBloc);
-    static std::string getBestImg(double val, std::ifstream& fichier);
+    static std::string getBestImg(double val,double variance, std::ifstream& fichier);
+    static double calculVariance(OCTET *imageIn, int height, int width, int i, int j, int tailleBloc, double mean);
 };
 
 

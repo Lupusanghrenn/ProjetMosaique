@@ -39,8 +39,11 @@ int main(int argc, char **argv) {
             //calculer moyenne
             double moyenne = Librairie::valeurMoyenne(ImgIn,nH,nW,y,x,TAILLE_BLOC);
 
+            //calculer variance
+            double variance  = Librairie::calculVariance(ImgIn,nH,nW,y,x,TAILLE_BLOC,moyenne);
+
             //Trouver image avec meilleur moyenne
-            vect.push_back(Librairie::getBestImg(moyenne,file));
+            vect.push_back(Librairie::getBestImg(moyenne,variance,file));
             
         }
     }
@@ -120,30 +123,62 @@ double Librairie::valeurMoyenne(OCTET *imageIn, int height, int width,int i, int
     return val;
 }
 
-string Librairie::getBestImg(double val, std::ifstream& fichier){
+double Librairie::calculVariance(OCTET *imageIn, int height, int width, int i, int j, int tailleBloc,double mean)
+{
+    double somme =0;
+    double nbPixel = 0;
+    for (int k = i; k < i+tailleBloc; ++k) {
+        for (int l = j; l < j+tailleBloc; ++l) {
+            somme +=(imageIn[k*height+l]-mean)*(imageIn[k*height+l]-mean);
+            nbPixel++;
+        }
+    }
+    double val = somme/nbPixel;
+    return val;
+}
+
+string Librairie::getBestImg(double val,double variance, std::ifstream& fichier){
 
     if(fichier){
-        double bestDif=255,currentVal,previousVal;
+        double bestDif=255,currentVal,previousVal,currentVariance,previousVariance,colorDifference=10;
         string name,bestName,previousName;
         int nh,nw;
 
         int indexBestVal=2;
-        fichier >> previousVal>>previousName>>nh>>nw;
-        fichier >> currentVal>>name>>nh>>nw;
-        while(indexBestVal<10000 && currentVal<val){
+        fichier >> previousVal>>previousName>>previousVariance>>nh>>nw;
+        fichier >> currentVal>>name>>currentVariance>>nh>>nw;
+
+        //choix de l'image en fonction de la moyenne et de la variance
+        while(indexBestVal<10000)
+        {
             previousVal=currentVal;
             previousName=name;
-            fichier >> currentVal>>name>>nh>>nw;
+            previousVariance=currentVariance;
             indexBestVal++;
+            fichier >> currentVal>>name>>currentVariance>>nh>>nw;
+            if(-colorDifference<(currentVal-val)&&colorDifference>(currentVal-val))
+            {
+                if (abs(currentVariance-variance)<abs(previousVariance-variance))
+                {
+                    bestName=name;
+                }
+            }
         }
 
-        if(val-previousVal<currentVal-val){
-            //previous Best
-            bestName=previousName;
-        }else{
-            //val best
-            bestName=name;
-        }
+        // while(indexBestVal<10000 && currentVal<val){
+        //     previousVal=currentVal;
+        //     previousName=name;
+        //     fichier >> currentVal>>name>>nh>>nw;
+        //     indexBestVal++;
+        // }
+
+        // if(val-previousVal<currentVal-val){
+        //     //previous Best
+        //     bestName=previousName;
+        // }else{
+        //     //val best
+        //     bestName=name;
+        // }
 
         fichier.clear();
         fichier.seekg(0, ios::beg);

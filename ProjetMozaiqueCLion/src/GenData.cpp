@@ -31,7 +31,8 @@ int main(int argc, char **argv) {
 
     if (fichier){
         cout << "Nom de l algo : "<<nomAlgo<<endl;
-        vector<double> vectDouble = vector<double>();//pour 
+        vector<double> vectDouble = vector<double>();//pour
+        vector<double> vectVariance = vector<double>(); 
         vector<string> vectString = vector<string>();//pour 
         for (int i = 0; i < 10000; ++i) {
             //le nom du fichier est donc i.pgm
@@ -50,6 +51,7 @@ int main(int argc, char **argv) {
             //TODO tri par insertion
 
             double val = Librairie::valeurMoyenne(ImgIn,nH,nW,0,0,nH);
+            double variance = Librairie::calculVariance(ImgIn,nH,nW,0,0,nH,val);
 
             int index=0;
             while(index<i && vectDouble[index]<val){
@@ -57,11 +59,12 @@ int main(int argc, char **argv) {
             }
 
             vectDouble.insert(vectDouble.begin()+index,val);
+            vectVariance.insert(vectVariance.begin()+index,variance);
             vectString.insert(vectString.begin()+index,name);
         }
 
         for(int index=0;index<10000;index++){
-            fichier<<vectDouble[index]<<" "<<vectString[index]<<" "<<512<<" "<<512<<std::endl;
+            fichier<<vectDouble[index]<<" "<<vectString[index]<<" "<<vectVariance[index]<<" "<<512<<" "<<512<<std::endl;
         }
     }else{
         cout << "Erreur d'ouverture du fichier data"<<endl;
@@ -76,6 +79,20 @@ double Librairie::valeurMoyenne(OCTET *imageIn, int height, int width,int i, int
     for (int k = i; k < i+tailleBloc; ++k) {
         for (int l = j; l < j+tailleBloc; ++l) {
             somme +=imageIn[k*height+l];
+            nbPixel++;
+        }
+    }
+    double val = somme/nbPixel;
+    return val;
+}
+
+double Librairie::calculVariance(OCTET *imageIn, int height, int width, int i, int j, int tailleBloc,double mean)
+{
+    double somme =0;
+    double nbPixel = 0;
+    for (int k = i; k < i+tailleBloc; ++k) {
+        for (int l = j; l < j+tailleBloc; ++l) {
+            somme +=(imageIn[k*height+l]-mean)*(imageIn[k*height+l]-mean);
             nbPixel++;
         }
     }
